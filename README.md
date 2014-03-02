@@ -12,6 +12,6 @@ Project1 is to make a game which there is no intersect between any two lines.
 Project2 is to make a model of The South Crystal
 ![alt The South Crystal](http://s0.geograph.org.uk/geophotos/03/65/77/3657795_719a1d02.jpg)
 
-Credits:
+### Special Thanks:
 
 Luyang Tang
