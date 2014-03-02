@@ -1,0 +1,417 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Project 2 The South Crystal</title><meta name="generator" content="MATLAB 8.2"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2014-03-01"><meta name="DC.source" content="project2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Project 2 The South Crystal</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Exercise 1</a></li><li><a href="#3">Exercise 2</a></li><li><a href="#8">Exercise 3</a></li><li><a href="#22">Exercise 4 and 5</a></li><li><a href="#25">Exercise 6</a></li><li><a href="#31">Exercise 7</a></li><li><a href="#32">Exercise 8</a></li></ul></div><h2>Exercise 1<a name="1"></a></h2><p>Firstly we plot Annie's pig.</p><pre class="codeinput">figure(1)
+[Verticesannie, Facesannie] = simple_ply_loader(<span class="string">'annies_pig.ply'</span>);
+trimesh(Facesannie,Verticesannie(:,1),Verticesannie(:,2),Verticesannie(:,3));
+</pre><img vspace="5" hspace="5" src="project2_01.png" alt=""> <p>Now we plot Stanford's bunny.</p><pre class="codeinput">figure(2)
+[Verticesstanford, Facesstanford] = simple_ply_loader(<span class="string">'stanford_bunny.ply'</span>);
+trisurf(Facesstanford,Verticesstanford(:,1),Verticesstanford(:,2),Verticesstanford(:,3));
+</pre><img vspace="5" hspace="5" src="project2_02.png" alt=""> <h2>Exercise 2<a name="3"></a></h2><p><b>Write a code that draws the boundary of the polygon.</b></p><p><tt>dlmread</tt> read ASCII delimited file so we can use this to import the data.</p><pre class="codeinput">close <span class="string">all</span>
+V = dlmread(<span class="string">'crystal_bdy.txt'</span>);
+XV = [V(:,1);V(1,1)]; YV = [V(:,2);V(1,2)]; <span class="comment">% Since we want the polygon to be closed.</span>
+plot(XV,YV,<span class="string">'Color'</span>,<span class="string">'k'</span>,<span class="string">'LineWidth'</span>,2)
+</pre><img vspace="5" hspace="5" src="project2_03.png" alt=""> <p><b>Creat the meshgrid that is large enough to enclose the polygon.</b></p><p>This part is actually similar to the code inside the function <tt>ellipse_ev.m</tt>.</p><pre class="codeinput">close <span class="string">all</span>
+width = max(XV)-min(XV); height = max(YV)-min(YV);
+xmin = min(XV)-0.1*width; <span class="comment">% Let the rectangle to be 10% larger in width and height.</span>
+xmax = max(XV)+0.1*width;
+ymin = min(YV)-0.1*height;
+ymax = max(YV)+0.1*height;
+dx = (xmax-xmin)/100; <span class="comment">% I pick up this number since it's neither too small to be accurate nor too large to calculate.</span>
+xd = xmin:dx:xmax;
+yd = ymin:dx:ymax; <span class="comment">% These are the parameters for the meshgrid function</span>
+[X,Y] = meshgrid(xd,yd);
+</pre><p><b>Define a function that is 0 outside the polygon and 1 inside and plot this function.</b></p><pre class="codeinput">IN = double(inpolygon(X,Y,XV,YV)); <span class="comment">% X and Y are returned by meshgrid</span>
+<span class="comment">% We use 'double' since the surface command in pcolor must take numerical</span>
+<span class="comment">% values.</span>
+hold <span class="string">on</span>;
+pcolor(X,Y,IN); <span class="comment">% IN specifies the colour according to the 'output' from IN.</span>
+hold <span class="string">off</span>;
+</pre><img vspace="5" hspace="5" src="project2_04.png" alt=""> <h2>Exercise 3<a name="8"></a></h2><p><b>Introduction - Mathematical techniques involved</b></p><p>We are going to solve the eigenfunction <i>u</i> such that <img src="project2_eq03100.png" alt="$u_{xx}+u_{yy}=\lambda\times u$"> and <img src="project2_eq09859.png" alt="$u(0,y) = u(\pi,y) = u(x,0) = u(x,\pi) = 0$"></p><p>By separation of variables, suppose <img src="project2_eq89629.png" alt="$u = F(x)G(x)$">, then we may have an equation as <img src="project2_eq39302.png" alt="$F''(x)G(y)+F(x)G''(y) = \lambda F(x)G(y)$">.</p><p>Divide both sides of the equation by <img src="project2_eq78025.png" alt="$F(x)G(y)$"> so that we will have <img src="project2_eq22714.png" alt="$\frac{F''(x)}{F(x)} = \lambda-\frac{G''(y)}{G(y)} = c$">, where <i>c</i> is a constant independent of <i>x</i> and <i>y</i>.</p><p>Therefore this PDE is converted into a system of linear differential equations: <img src="project2_eq94347.png" alt="$F''(x)-cF(x) = 0$"> where <img src="project2_eq50352.png" alt="$F(0) = F(\pi) = 0$"> and <img src="project2_eq96545.png" alt="$G''(y)+(c-\lambda)G(y) = 0$"> where <img src="project2_eq43268.png" alt="$G(0) = G(\pi) = 0$">. If <i>c&gt;0</i>, then we can denote <i>c</i> by <img src="project2_eq40529.png" alt="$m^2$"> and thus the first differential equation becomes <img src="project2_eq85315.png" alt="$F''(x)-m^2F(x)=0$">.</p><p>Then we get the general solution <img src="project2_eq67259.png" alt="$F(x) = C_1e^{mx}+C_2e^{-mt}$"></p><p>By plugging in the boundary condition <img src="project2_eq50352.png" alt="$F(0) = F(\pi) = 0$">, we will have <img src="project2_eq83847.png" alt="$C_1 = C_2 = 0$">, which is a trivial solution. Therefore, <i>c</i> must be a non-positive constant.</p><p>Hence, we may have an expression for the <i>F</i>, which is <img src="project2_eq71833.png" alt="$F(x) = A\cos(nx)+B\sin(nx)$"> where <i>n</i> is an integer which is a parameter for the function <tt>eiglap_square</tt> and constants <i>A</i> and <i>B</i> are arbitrary constants.</p><p>Plugging in the boundary condition to determine <i>A</i> and <i>B</i> to have <i>A=0</i> and thus we have <img src="project2_eq98809.png" alt="$F(x) = B\sin(nx)$">.</p><p>Similarly we may have <img src="project2_eq28258.png" alt="$G(y) = b\sin(my)$"> for some integer <i>m</i>.</p><p>This gives the eigenfunction <img src="project2_eq88957.png" alt="$u(x,y) = C\sin(nx)\sin(my)$"> for an arbitrary constant <i>C</i>. Similar to how we deal with eigenvectors in the linear algebra, we now have an eigenspace <img src="project2_eq03959.png" alt="${C\sin(nx)\sin(my):C\in R}$"> with <img src="project2_eq82423.png" alt="$\sin(nx)\sin(my)$"> as a basis.</p><p>Back to the original equation defining eigenfunctions and eigenvalues, we may see that <img src="project2_eq22270.png" alt="$-(u_{xx}+u_{yy})=\lambda u$"> and this gives the value of the eigenvalue <img src="project2_eq15235.png" alt="$\lambda = n^2+m^2$">.</p><p><b>Admissible values for <i>n</i> and <i>m</i></b></p><p>So as to ensure that <img src="project2_eq50352.png" alt="$F(0) = F(\pi) = 0$"> and <img src="project2_eq43268.png" alt="$G(0) = G(\pi) = 0$"> are both satisfied, <i>n</i> and <i>m</i> must be integers. And since apparently we don't want a trivial solution, we need <i>n</i> and <i>m</i> both to be taking non-zero values.</p><pre class="codeinput">   close <span class="string">all</span>
+ type <span class="string">eiglap_square.m</span>
+</pre><pre class="codeoutput">
+function eiglap_square(n,m,x,y)
+% n and m should be non-zero integer parameters. x and y should be symbolic
+% variables.
+if  rem(n,1) ~= 0 || rem(m,1) ~= 0 || n == 0 || m == 0
+    error('n and m must be non-zero integers')
+else
+    ef = sin(n*x)*sin(m*y);
+    lambda = double(n^2 + m^2);
+end
+[ef,lambda]
+end  
+</pre><h2>Exercise 4 and 5<a name="22"></a></h2><p><b>A list of all the changes that I have made</b></p><div><ul><li><tt>Line 9 - 17</tt> of <tt>crystal_ev.m</tt> is the meshgrid created to enclose the polygon instead of the ellipse.</li><li><tt>Line 19 - 23</tt> has defined a 'characteristic function' for the polygon.</li><li><tt>Line 29</tt> requires <i>k</i> to find the entries in <i>G</i> that are greater than 0.5 since we are no longer defining points outside the boundary to be negative, instead, those points are assigned to be 0.</li><li><tt>Line 58</tt> and <tt>67</tt> has changed the eigenmode to its absolute value.</li><li><tt>Line 67</tt> plots the 2nd eigenmode instead of the 10th.</li><li><tt>Line 70</tt> a small change in the title.</li></ul></div><pre class="codeinput"> close <span class="string">all</span>
+ type <span class="string">crystal_ev.m</span>
+ [ews, evs] = crystal_ev(XV, YV, 1); <span class="comment">% make_plot == 1 means we need a graph here.</span>
+</pre><pre class="codeoutput">
+function [ews, evs] = crystal_ev(xv,yv, make_plots)
+% xv and yv should be the x and y coordinates of the vertices respectively
+% and make_plots returns true or false.
+
+  if nargin &lt; 3
+    make_plots = true;
+  end
+
+  n = 200;  % larger value gives more accuracy but slower
+
+  %% make a rectangular grid that will contain the polygon
+ x1 = min(xv);  x2 = max(xv);
+y1 = min(yv);  y2 = max(yv);
+w = min(x2-x1, y2-y1);
+x1 = x1-0.1*w; x2 = x2+0.1*w;
+y1 = y1-0.1*w; y2 = y2+0.1*w;
+dx = (x2-x1) / n;
+x1d = x1:dx:x2; y1d = y1:dx:y2;
+[x,y] = meshgrid(x1d,y1d);
+
+  %% An implicit representation of the shape
+  % 0 inside and positive outside.
+in_out_code = inpolygon(x,y,xv,yv);
+G = zeros(size(in_out_code));
+G(in_out_code) = 1;
+
+
+  %% Build a grid
+  % this is from numgrid.m: we choose an ordering for the points
+  % inside the ellipse (all other points are labeled 0).
+ k = find(G &gt; 0.5);     % now find the linear index of these.
+G = zeros(size(x));    % new all zero matrix
+G(k) = (1:length(k))'; % label them inside ones from 1 upwards
+
+  %figure(2); clf;
+  %spy(G)
+  %axis equal
+
+  % build a finite different approximation to the Laplacian based on
+  % the grid G
+  L = delsq(G);
+  L = 1/dx^2 * L;
+
+  %% find the first 20 smallest magnitude eigenvalues
+ tic
+[evs, ews, flag] = eigs(L, 20, 'sm');
+toc
+if flag ~= 0
+    error('convergence problem');
+end
+ews = diag(ews);
+% sort the eigenvalues, we want the smallest first
+[ews,I] = sort(ews);
+% and re-arrange the eigenvectors too
+evs = evs(:,I);
+if (make_plots)
+    figure(1); clf
+    tic;
+    for s = 1:16
+        ev = abs(evs(:,s)); u = zeros(size(G)); u(G&gt;0) = ev;
+        u(G==0) = nan;   % optional, hide the outside
+        subplot(4,4,s);
+        % careful with this nan trick: its good for plotting but
+        % could lead to trouble if u is used in a later computation.
+        pcolor(x,y,u); shading flat; axis equal; axis tight;
+        title(['em ' num2str(s) ' /ev=' num2str(ews(s))]);
+    end
+    figure(2); clf
+    ev = abs(evs(:,2)); lambda = ews(2);
+    u = zeros(size(G)); u(G&gt;0) = ev; 
+    
+    surf(x,y,u);
+
+    title(sprintf('2nd eigenmode, lambda = %g',lambda)); toc
+    drawnow; pause(0);
+end
+
+Elapsed time is 0.279676 seconds.
+Elapsed time is 0.783396 seconds.
+</pre><img vspace="5" hspace="5" src="project2_05.png" alt=""> <img vspace="5" hspace="5" src="project2_06.png" alt=""> <h2>Exercise 6<a name="25"></a></h2><pre class="codeinput"> close <span class="string">all</span>;
+</pre><p><b>Restriction of value for z</b></p><p>As the manual suggests, the height of the skylight can't exceed 2.25 meters. We can do this by multiply the eigenmode by a scalar to restrain the maximum value of <i>z</i> . This can be done by</p><p><tt>z(G&gt;0) = 2.25*abs(evs(:,2))/abs(evs(Imax,2));</tt></p><p>This means where <i>G</i> is greater than 0 (i.e. the point falls inside the polygon) we assign z to be the absolute value of the eigenmode at that point. And then we multiply it by <tt>2.25/abs(evs(Imax,2))</tt> so that the maximum height will be exactly 2.25 meters.</p><p>The following is the code for the function.</p><pre class="codeinput">type <span class="string">compute_vertices.m</span>;
+</pre><pre class="codeoutput">
+function Vertices = compute_vertices (xv,yv,Vertices)
+% xv and yv are the x,y coordinate matrices respectively and Vertices
+% matrix is the matrix with all the vertices of triangles in 2D plane.
+[ews, evs] = crystal_ev(xv,yv, 0);
+[Vmax,Imax] = max(abs(evs(:,2)));
+
+%% meshgrid again
+x1 = min(xv);  x2 = max(xv);
+y1 = min(yv);  y2 = max(yv);
+w = min(x2-x1, y2-y1);
+x1 = x1-0.1*w; x2 = x2+0.1*w;
+y1 = y1-0.1*w; y2 = y2+0.1*w;
+dx = (x2-x1) / 200;
+x1d = x1:dx:x2; y1d = y1:dx:y2;
+[x,y] = meshgrid(x1d,y1d);
+% logic matrix G
+in_out_code = inpolygon(x,y,xv,yv);
+
+G = zeros(size(in_out_code));
+G(in_out_code) = 1;
+%% assign values to z
+z = zeros(size(x));
+z(G&gt;0) = 2.25*abs(evs(:,2))/abs(evs(Imax,2));
+Vertices(:,3) = interp2(x,y,z,Vertices(:,1),Vertices(:,2));
+</pre><h2>Exercise 7<a name="31"></a></h2><p>We just need to put all pieces together.</p><pre class="codeinput">close <span class="string">all</span>;
+[Vertices, Faces] = simple_ply_loader(<span class="string">'crystal_flat.ply'</span>);
+Vertices = compute_vertices(XV,YV,Vertices); <span class="comment">% We add the z value column to the Vertices matrix.</span>
+figure; hold <span class="string">on</span>;
+plot(XV,YV,<span class="string">'k'</span>,<span class="string">'linewidth'</span>,2); <span class="comment">% We want to plot the boundary as well.</span>
+H = trimesh(Faces,Vertices(:,1),Vertices(:,2),Vertices(:,3));
+set(H,<span class="string">'facealpha'</span>,0);
+axis <span class="string">equal</span>; view(3);
+title(<span class="string">'South Crystal Skylight'</span>);
+</pre><pre class="codeoutput">Elapsed time is 0.295438 seconds.
+</pre><img vspace="5" hspace="5" src="project2_07.png" alt=""> <h2>Exercise 8<a name="32"></a></h2><p>From <tt>crystal_ev.m</tt> we can extract the second eigenvalue.</p><pre class="codeinput">ews(2)
+</pre><pre class="codeoutput">
+ans =
+
+    0.4478
+
+</pre><p><b>Decimal Places</b></p><p>Take a look at the code of <tt>ellipse_ev.m</tt> to learn how eigenvalues are derived.</p><p><tt>delsq</tt> constructs five-point finite difference Laplacian.</p><p>Then we assigned <i>L</i> a value such that <tt>L = 1/dx^2 * L</tt> .</p><pre class="codeinput">dx
+</pre><pre class="codeoutput">
+dx =
+
+    0.2217
+
+</pre><p>according to our choice of <i>n</i>, which equals to 200. Therefore, the error is <img src="project2_eq16081.png" alt="$\mathrm{dx}^2$"> , which equals to 0.04915. i.e. we can be confident in 2 decimal places.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2013b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Project 2 The South Crystal
+
+%% Exercise 1
+% Firstly we plot Annie's pig.
+figure(1)
+[Verticesannie, Facesannie] = simple_ply_loader('annies_pig.ply');
+trimesh(Facesannie,Verticesannie(:,1),Verticesannie(:,2),Verticesannie(:,3));
+
+%%
+% Now we plot Stanford's bunny.
+figure(2)
+[Verticesstanford, Facesstanford] = simple_ply_loader('stanford_bunny.ply');
+trisurf(Facesstanford,Verticesstanford(:,1),Verticesstanford(:,2),Verticesstanford(:,3));
+
+%% Exercise 2
+% *Write a code that draws the boundary of the polygon.*
+%%
+% |dlmread| read ASCII delimited file so we can use this to import the
+% data.
+close all
+V = dlmread('crystal_bdy.txt');
+XV = [V(:,1);V(1,1)]; YV = [V(:,2);V(1,2)]; % Since we want the polygon to be closed.
+plot(XV,YV,'Color','k','LineWidth',2)
+
+%%
+% *Creat the meshgrid that is large enough to enclose the polygon.*
+%%
+% This part is actually similar to the code inside the function
+% |ellipse_ev.m|.
+close all
+width = max(XV)-min(XV); height = max(YV)-min(YV);
+xmin = min(XV)-0.1*width; % Let the rectangle to be 10% larger in width and height.
+xmax = max(XV)+0.1*width;
+ymin = min(YV)-0.1*height;
+ymax = max(YV)+0.1*height;
+dx = (xmax-xmin)/100; % I pick up this number since it's neither too small to be accurate nor too large to calculate.
+xd = xmin:dx:xmax;
+yd = ymin:dx:ymax; % These are the parameters for the meshgrid function
+[X,Y] = meshgrid(xd,yd);
+
+%% 
+% *Define a function that is 0 outside the polygon and 1 inside and plot this function.*
+IN = double(inpolygon(X,Y,XV,YV)); % X and Y are returned by meshgrid
+% We use 'double' since the surface command in pcolor must take numerical
+% values.
+hold on;
+pcolor(X,Y,IN); % IN specifies the colour according to the 'output' from IN.
+hold off;
+
+%% Exercise 3
+ % *Introduction - Mathematical techniques involved*
+   %%
+   % We are going to solve the eigenfunction _u_ such that
+   % $u_{xx}+u_{yy}=\lambda\times u$ and $u(0,y) = u(\pi,y) = u(x,0) = u(x,\pi)
+   % = 0$
+   %%
+   % By separation of variables, suppose $u = F(x)G(x)$, then we may have
+   % an equation as $F''(x)G(y)+F(x)G''(y) = \lambda F(x)G(y)$.
+   
+   %%
+   % Divide both sides of the equation by $F(x)G(y)$ so that we will have
+   % $\frac{F''(x)}{F(x)} = \lambda-\frac{G''(y)}{G(y)} = c$, where _c_ is
+   % a constant independent of _x_ and _y_.
+   %%
+   % Therefore this PDE is converted into a system of linear differential
+   % equations:
+   % $F''(x)-cF(x) = 0$ where $F(0) = F(\pi) = 0$ and
+   % $G''(y)+(c-\lambda)G(y) = 0$ where $G(0) = G(\pi) = 0$.
+   % If _c>0_, then we can denote _c_ by $m^2$ and thus the first
+   % differential equation becomes $F''(x)-m^2F(x)=0$.
+   %%
+   % Then we get the general solution $F(x) = C_1e^{mx}+C_2e^{-mt}$
+   %%
+   % By plugging in the boundary condition $F(0) = F(\pi) = 0$, we will
+   % have $C_1 = C_2 = 0$, which is a trivial solution. Therefore, _c_ must
+   % be a non-positive constant.
+   %%
+   % Hence, we may have an expression for the _F_, which is $F(x) =
+   % A\cos(nx)+B\sin(nx)$ where _n_ is an integer which is a parameter for
+   % the function |eiglap_square| and constants _A_ and _B_ are arbitrary constants.
+   %%
+   % Plugging in the boundary condition to determine _A_ and _B_ to have
+   % _A=0_ and thus we have $F(x) = B\sin(nx)$.
+   %%
+   % Similarly we may have $G(y) = b\sin(my)$ for some integer _m_.
+   %%
+   % This gives the eigenfunction $u(x,y) = C\sin(nx)\sin(my)$ for an
+   % arbitrary constant _C_. Similar to how we deal with eigenvectors in
+   % the linear algebra, we now have an eigenspace
+   % ${C\sin(nx)\sin(my):C\in R}$ with $\sin(nx)\sin(my)$ as a basis. 
+   %% 
+   % Back to the original equation defining eigenfunctions and eigenvalues,
+   % we may see that $-(u_{xx}+u_{yy})=\lambda u$ and this gives the value
+   % of the eigenvalue $\lambda = n^2+m^2$.
+   
+   %%  
+   % *Admissible values for _n_ and _m_*
+   %%
+   % So as to ensure that $F(0) = F(\pi) = 0$ and $G(0) = G(\pi) = 0$ are
+   % both satisfied, _n_ and _m_ must be integers. And since apparently we
+   % don't want a trivial solution, we need _n_ and _m_ both to be taking non-zero
+   % values.
+   close all
+ type eiglap_square.m
+ 
+ 
+ %% Exercise 4 and 5
+ % *A list of all the changes that I have made*
+ %%
+ % 
+ % * |Line 9 - 17| of |crystal_ev.m| is the meshgrid created to enclose the
+ % polygon instead of the ellipse.
+ % * |Line 19 - 23| has defined a 'characteristic function' for the polygon.
+ % * |Line 29| requires _k_ to find the entries in _G_ that are greater than
+ % 0.5 since we are no longer defining points outside the boundary to be
+ % negative, instead, those points are assigned to be 0.
+ % * |Line 58| and |67| has changed the eigenmode to its absolute value.
+ % * |Line 67| plots the 2nd eigenmode instead of the 10th.
+ % * |Line 70| a small change in the title.
+ % 
+ % 
+ 
+ %%
+ % 
+ close all
+ type crystal_ev.m
+ [ews, evs] = crystal_ev(XV, YV, 1); % make_plot == 1 means we need a graph here.
+ 
+ %% Exercise 6
+ close all;
+ %%
+ % *Restriction of value for z*
+ %%
+ % As the manual suggests, the height of the skylight can't exceed 2.25
+ % meters. We can do this by multiply the eigenmode by a scalar to restrain
+ % the maximum value of _z_ . This can be done by
+ %%
+ % |z(G>0) = 2.25*abs(evs(:,2))/abs(evs(Imax,2));|
+ %%
+ % This means where _G_ is greater than 0 (i.e. the point falls inside the
+ % polygon) we assign z to be the absolute value of the eigenmode at that
+ % point. And then we multiply it by |2.25/abs(evs(Imax,2))| so
+ % that the maximum height will be exactly 2.25 meters.
+ %%
+ % The following is the code for the function.
+type compute_vertices.m;
+%% Exercise 7
+% We just need to put all pieces together.
+close all;
+[Vertices, Faces] = simple_ply_loader('crystal_flat.ply');
+Vertices = compute_vertices(XV,YV,Vertices); % We add the z value column to the Vertices matrix.
+figure; hold on;
+plot(XV,YV,'k','linewidth',2); % We want to plot the boundary as well.
+H = trimesh(Faces,Vertices(:,1),Vertices(:,2),Vertices(:,3));
+set(H,'facealpha',0);
+axis equal; view(3);
+title('South Crystal Skylight');
+%% Exercise 8
+% From |crystal_ev.m| we can extract the second eigenvalue.
+ews(2)
+%%
+% *Decimal Places*
+%%
+% Take a look at the code of |ellipse_ev.m| to learn how eigenvalues are
+% derived.
+%%
+% |delsq| constructs five-point finite difference Laplacian.
+%%
+% Then we assigned _L_ a value such that |L = 1/dx^2 * L| . 
+dx
+%%
+% according to our choice of _n_, which equals to 200. Therefore, the error
+% is $\mathrm{dx}^2$ , which equals to 0.04915.
+% i.e. we can be confident in 2 decimal places.
+##### SOURCE END #####
+--></body></html>
